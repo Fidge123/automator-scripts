@@ -1,0 +1,3 @@
+Some text
+Some more text
+Special characters are not supported 👍 süß

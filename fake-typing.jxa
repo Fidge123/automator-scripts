@@ -1,0 +1,28 @@
+function run(input, parameters) {
+  const sys_events = Application("System Events");
+  const app = Application.currentApplication();
+  app.includeStandardAdditions = true;
+
+  const currentFilePath = Path("/Users/d065362/dev/automator/current.txt");
+  const inputFilePath = Path("/Users/d065362/dev/automator/text.txt");
+
+  const currentLine = parseInt(app.read(currentFilePath).split('\n')[0], 10);
+  const texts = app.read(inputFilePath).split('\n');
+  const text = currentLine < texts.length ? texts[currentLine] : texts[0];
+  const nextLine = currentLine + 1 < texts.length ? currentLine + 1 : 0;
+
+  text.split("").forEach((char) => {
+    sys_events.keystroke(char);
+    delay(0.03 + Math.random() * 0.03);
+  });
+  sys_events.keyCode(36, { using: 'shift down' });
+
+  const currentFile = app.openForAccess(currentFilePath, { writePermission: true });
+  app.setEof(currentFile, { to: 0 });
+  app.write(nextLine.toString(), {
+    to: currentFile,
+    startingAt: app.getEof(currentFile),
+  });
+  app.closeAccess(currentFile);
+  return currentLine;
+}
