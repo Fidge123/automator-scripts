@@ -9,3 +9,4 @@ It will simulate typing text from the `text.txt`.
 - https://softwarerecs.stackexchange.com/questions/10048/any-apps-that-type-what-you-paste-in-os-x
 - https://en.wikipedia.org/wiki/AppleScript
 - https://blog.fosketts.net/2010/08/09/assign-keyboard-shortcut-applescript-automator-service/
+- https://eastmanreference.com/complete-list-of-applescript-key-codes
